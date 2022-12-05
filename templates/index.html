@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Welcome to CV Screener App
+{% endblock %}
+
+{% block content %}
+
+<header class="header-content">
+  <nav class="navbar navbar-expand-lg navbar-light">
+     <div class="container">
+      <a class="navbar-brand logo" href="#">CV Screener</a>
+       <!-- <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" width="25" height="24" class="nav-logo"> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-expanded="false" aria-controls="navbarCollapse" aria-label="Toggle Navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+           <ul class="navbar-nav main">
+              <li class="nav-item">
+                 <a href="{{ url_for('index') }}" class="nav-link active">Home</a>
+              </li>
+              <li class="nav-item">
+                 <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+              </li>
+              <li class="nav-item">
+                 <a href="{{ url_for('signup') }}" class="nav-link">Register</a>
+              </li>
+           </ul>
+        </div>
+     </div>
+  </nav>
+</header>
+
+<!-- Home Content Starts -->
+<section id="home-content" style="background: url(../static/img/index-banner.jpg); background-size: cover; background-position: 25% 75%;" data-scroll-index="0">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-7 offset-lg-1">
+      <div class="home-text">
+          <div class="home-text-inner">
+          <h3>Hello</h3>
+          <h1>Welcome to</h1>
+          <h1 class="cd-headline clip">
+          <span class="cd-words-wrapper">
+              <b class="is-visible">CV Screener.</b>
+              <b>Resume Screener.</b>
+          </span>
+      </h1>
+          <p>
+          To use this web app please click the button down below.
+          </p>
+          <a href="{{ url_for('login') }}" class="btn btn-primary hire-me">Get Started</a>
+        </div>
+    </div>
+    </div>
+    </div>
+  </div>
+</section>
+<!-- Home Section Ends -->
+
+
+{% endblock %}
+
+
+
+
+

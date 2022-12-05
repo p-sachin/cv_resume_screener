@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Registration Page
+{% endblock %}
+
+{% block content %}
+
+<style>
+   html,
+   body {
+     height: 100%;
+   }
+
+   nav .navbar-brand.logo {
+    color: #222;
+  }
+   
+   body {
+     display: flex;
+     align-items: center;
+     padding-top: 40px;
+     padding-bottom: 40px;
+     background-color: #f5f5f5;
+   }
+   
+   .form-signin {
+     width: 100%;
+     max-width: 330px;
+     padding: 15px;
+     margin: auto;
+   }
+
+   nav.navbar ul.navbar-nav li.nav-item a.active {
+      color: #ef6108 !important;
+    }
+   
+   .form-signin .checkbox {
+     font-weight: 400;
+   }
+   
+   .form-signin .form-floating:focus-within {
+     z-index: 2;
+   }
+   
+   .form-signin input[type="email"] {
+     margin-bottom: -1px;
+     border-bottom-right-radius: 0;
+     border-bottom-left-radius: 0;
+   }
+   
+   .form-signin input[type="password"] {
+     margin-bottom: 10px;
+     border-top-left-radius: 0;
+     border-top-right-radius: 0;
+   }
+
+   nav.navbar .nav-item {
+      padding: 0 13px 0 13px;
+      font-family: "Raleway", sans-serif;
+      color: #222;
+    }
+    
+    nav.navbar ul.navbar-nav li.nav-item a.nav-link {
+      font-size: 12px;
+      font-weight: 500;
+      color: #222;
+      padding: 0;
+      position: relative;
+      text-transform: uppercase;
+    }
+</style>
+
+
+
+<header class="header-content">
+  <nav class="navbar navbar-expand-lg navbar-light">
+     <div class="container">
+      <a class="navbar-brand logo" href="#">CV Screener</a>
+       <!-- <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" width="25" height="24" class="nav-logo"> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-expanded="false" aria-controls="navbarCollapse" aria-label="Toggle Navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+           <ul class="navbar-nav main">
+              <li class="nav-item">
+                 <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item">
+                 <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+              </li>
+              <li class="nav-item">
+                 <a href="{{ url_for('signup') }}" class="nav-link active">Register</a>
+              </li>
+           </ul>
+        </div>
+     </div>
+  </nav>
+</header>
+
+<div class="container login-content">
+   <form method="post" action="/signup" class="form-signin">
+      <div class="upper-content text-center">
+     <img class="mb-4" src="{{ url_for('static', filename='img/user.png') }}" alt="" width="72" height="57">
+     <h1 class="h3 mb-3 fw-normal">Register Yourself</h1>
+     </div>
+     {% for message in get_flashed_messages() %}
+     <div class=flash-signup>{{ message }}</div>
+      {% endfor %}
+      {{ form.hidden_tag() }}
+     <div class="form-floating">
+      {{ wtf.form_field(form.username) }}
+     </div>
+     <div class="form-floating pt-15">
+      {{ wtf.form_field(form.email) }}
+     </div>
+     <div class="form-floating pt-15">
+      {{ wtf.form_field(form.password) }}
+     </div>
+
+     <button class="w-100 btn btn-lg btn-primary mt-10 sign-btn" type="submit">Register</button>
+   </form>
+</div>
+
+
+{% endblock %}
+
+
+
